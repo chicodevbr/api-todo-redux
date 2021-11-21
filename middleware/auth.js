@@ -5,8 +5,8 @@ function auth(req, res, next) {
   if (!token) return res.status(401).send('Not authorized...');
 
   try {
-    const secretKey = process.env.SECRET_KEY;
-    const payload = jwt.verify(token, secretKey);
+    const SECRET_KEY = process.env.SECRET_KEY;
+    const payload = jwt.verify(token, SECRET_KEY);
     req.user = payload;
     next();
   } catch (error) {
